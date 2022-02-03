@@ -271,7 +271,7 @@ class RemoteCommand(AbstractCommand):
             self._shell.execCommand('sudo ' + command)
         else:
             self._shell.execCommand('sudo --stdin --prompt "" %s' % (command))
-            self._stdin.write('\n\n' + sudo_password + '\n')
+            self._stdin.sendall('\n\n' + sudo_password + '\n')
 
     def _invoke(self):
         command = self._command.decode(self._encoding)
